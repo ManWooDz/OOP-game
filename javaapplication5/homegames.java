@@ -24,7 +24,7 @@ public class homegames extends JPanel{
             setLayout(null);
             BExit1.setBounds(500, 650, 170,90);
             add(BExit1);
-            add(BStart);
+        //     add(BStart);
             BStart.setBounds(750,650,170,90);
             add(BStart);
 	}

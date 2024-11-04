@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package extimer;
+// package extimer;
 
 import java.awt.Font;
 import java.awt.Graphics;
@@ -53,7 +53,7 @@ public class EXMouse extends JFrame {
                 public void keyPressed(KeyEvent e) {
                     switch(e.getKeyCode()){
                         case KeyEvent.VK_W: y=y-10;break;
-                        case KeyEvent.VK_X:y=y+10;break;
+                        case KeyEvent.VK_S:y=y+10;break;
                         case KeyEvent.VK_A: x=x-10;break;
                         case KeyEvent.VK_D:x=x+10;break;
                         default: ch = e.getKeyChar();
