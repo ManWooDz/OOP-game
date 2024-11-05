@@ -13,9 +13,9 @@ public class lobbygame extends JPanel{
 
     lobbygame(){
         setLayout(null);
-        exitJB.setBounds((int)707.5, 645, 170,90);
-        startJB.setBounds((int)112.5,645,170,90);
-        settingJB.setBounds(415,645,170,90);
+        exitJB.setBounds((int)564.5, 432, 100,53);
+        startJB.setBounds((int)121.5,432,100,53);
+        settingJB.setBounds(343,432,170,53);
         add(exitJB);
         add(settingJB);
         // add(start);
@@ -25,7 +25,7 @@ public class lobbygame extends JPanel{
     
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(background.getImage(),0,0,1000,800,this);
+        g.drawImage(background.getImage(),0,0,768,576,this);
         g.setColor(Color.GREEN);
         g.setFont(new Font("2005_iannnnnTKO",Font.CENTER_BASELINE,90));
 

@@ -12,10 +12,10 @@ public class difficultyselect extends JPanel{
     difficultyselect(){
         setLayout(null);
         
-        peacefulJB.setBounds((int)112.5,645,170,90);
-        EasyJB.setBounds(415,645,170,90);
-        HardJB.setBounds((int)707.5, 645, 170,90);
-        backJB.setBounds((int)50,50,50,50);
+        peacefulJB.setBounds((int)121.5,432,100,53);
+        EasyJB.setBounds(343,432,100,53);
+        HardJB.setBounds((int)564.5, 432, 100,53);
+        backJB.setBounds((int)50,50,25,25);
         add(peacefulJB);
         add(EasyJB);
         // add(start);
@@ -25,7 +25,7 @@ public class difficultyselect extends JPanel{
     
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(background.getImage(),0,0,1000,800,this);
+        g.drawImage(background.getImage(),0,0,768,576,this);
         g.setColor(Color.GREEN);
         g.setFont(new Font("2005_iannnnnTKO",Font.CENTER_BASELINE,90));
 

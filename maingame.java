@@ -14,7 +14,8 @@ public class maingame extends JFrame implements ActionListener{
     JPanel selectDifficalty = new JPanel();
     
     public maingame(){
-        this.setSize(1000, 800);
+        // this.setSize(1000, 800);
+        this.setSize(768, 576);
         this.add(lobbyscreen);
         lobbyscreen.exitJB.addActionListener(this);
         lobbyscreen.startJB.addActionListener(this);
@@ -30,22 +31,26 @@ public class maingame extends JFrame implements ActionListener{
         }else if(e.getSource() == lobbyscreen.settingJB){
             this.setLocationRelativeTo(null);
             this.remove(lobbyscreen);
-            this.setSize(1000, 800);
+            // this.setSize(1000, 800);
+            this.setSize(768, 576);
             this.add(settingscreen);
         }else if(e.getSource() == lobbyscreen.startJB){
             this.setLocationRelativeTo(null);
             this.remove(lobbyscreen);
-            this.setSize(1000, 800);
+            // this.setSize(1000, 800);
+            this.setSize(768, 576);
             this.add(difficulscreen);
         }else if(e.getSource() == difficulscreen.backJB){
             this.setLocationRelativeTo(null);
             this.remove(difficulscreen);
-            this.setSize(1000, 800);
+            // this.setSize(1000, 800);
+            this.setSize(768, 576);
             this.add(lobbyscreen);
         }else if(e.getSource() == difficulscreen.peacefulJB){
             this.setLocationRelativeTo(null);
             this.remove(difficulscreen);
             // this.setSize(1000, 800);
+            this.setSize(768, 576);
             this.add(peacefulMode);
             peacefulMode.startgameThread();
             peacefulMode.requestFocusInWindow();
@@ -57,7 +62,8 @@ public class maingame extends JFrame implements ActionListener{
     public static void main(String[] args) {
         JFrame mainFrame = new maingame();
         mainFrame.setTitle("Maze Adventure");
-        mainFrame.setSize(1000,800);
+        // mainFrame.setSize(1000,800);
+        mainFrame.setSize(768,576);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);

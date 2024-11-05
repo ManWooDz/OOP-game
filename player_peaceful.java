@@ -19,16 +19,29 @@ public class player_peaceful extends entity_peaceful{
     playpeaceful gp;
     keyHandler keyH;
 
+    public final int screenX;
+    public final int screenY;
+    public final int screenXtemp;
+    public final int screenYtemp;
+
     player_peaceful(playpeaceful gp, keyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
+
+        screenX = gp.screenWidth/2 - (gp.tileSize/2);
+        screenY = gp.screenHeight/2 - (gp.tileSize/2);
+        screenXtemp = gp.screenWidth/2 ;
+        screenYtemp = gp.screenHeight/2 ;
+
         setDefaultValues();
         getPlayerImage();
     }
 
     public void setDefaultValues(){
-        x = 100;
-        y = 100;
+        // worldX = 624;
+        // worldY = 240;
+        worldX = gp.tileSize * 18;
+        worldY = gp.tileSize * 10;
         speed = 4;
         direction = "down";
     }
@@ -48,19 +61,20 @@ public class player_peaceful extends entity_peaceful{
         }
     }
     public void update(){
+        // System.out.println("X: " + worldX + ", Y: " + worldY);
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){
             if(keyH.upPressed == true){
                 direction = "up";
-                y -= speed;
+                worldY -= speed;
             }else if(keyH.downPressed == true){
                 direction = "down";
-                y += speed;
+                worldY += speed;
             }else if(keyH.leftPressed == true){
                 direction = "left";
-                x -= speed;
+                worldX -= speed;
             }else if(keyH.rightPressed == true){
                 direction = "right";
-                x += speed;
+                worldX += speed;
             }
 
             spriteCounter++;
@@ -114,7 +128,7 @@ public class player_peaceful extends entity_peaceful{
                 break;
         }
 
-        g2.drawImage(image, x, y,50,50,null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize,gp.tileSize,null);
         // g2.drawImage(image, 100, 100, 50, 50, null);
     }
 

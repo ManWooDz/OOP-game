@@ -23,28 +23,35 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     
     keyHandler keyH = new keyHandler();
     Thread gameThread;
-    player_peaceful player = new player_peaceful(this,keyH);
+    public player_peaceful player = new player_peaceful(this,keyH);
 
     lobbygame lobbyscreen = new lobbygame();
 
-    peacefulMaze mazelayout = new peacefulMaze();
+    // peacefulMaze mazelayout = new peacefulMaze();
 
     tilesManager_peaceful tileM = new tilesManager_peaceful(this);
 
     final int originalTileSize = 16;
     final int scale = 3;
 
-    final int tileSize = originalTileSize * scale;
+    final int tileSize = originalTileSize * scale; //48
     final int maxScreenCol = 16;
     final int maxScreenRow = 12;
-    final int screenHeight = tileSize*maxScreenCol;
-    final int screenWidth = tileSize*maxScreenRow;
+    final int screenHeight = tileSize*maxScreenCol; //768
+    final int screenWidth = tileSize*maxScreenRow;  //576
 
+    // final int screenHeight = 1000;
+    // final int screenWidth = 800;
+
+    //world setting
+    public final int maxWorldCol = 35;
+    public final int maxWorldRow = 35;
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
 
     //FPS
     int fps = 60;
 
-    
 
     //player def pos
     int playerX = 100;
@@ -106,6 +113,7 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     }
     public void update(){
         player.update();
+        // System.out.println();
     }
 
     public void paintComponent(Graphics g) {
@@ -114,7 +122,9 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         tileM.draw(g2);
+        System.out.println("draw tileM");
         player.draw(g2);
+        System.out.println("draw player");
 
         g2.dispose();
        
