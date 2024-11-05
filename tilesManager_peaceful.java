@@ -99,12 +99,12 @@ public class tilesManager_peaceful {
 
             int worldX = worldCol * gp.tileSize;
             int worldY = worldRow * gp.tileSize;
-            int screenX = worldX - gp.player.worldX + gp.player.screenX;
-            int screenY = worldY - gp.player.worldY + gp.player.screenY;
+            int screenX = worldX - gp.player.worldX + gp.player.screenXtemp;
+            int screenY = worldY - gp.player.worldY + gp.player.screenYtemp;
 
-            if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && worldY - gp.tileSize< gp.player.worldY + gp.player.screenY){
-                    // System.out.println("in if");
+            if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenXtemp && worldX - gp.tileSize < gp.player.worldX + gp.player.screenXtemp &&
+                worldY + gp.tileSize > gp.player.worldY - gp.player.screenYtemp && worldY - gp.tileSize< gp.player.worldY + gp.player.screenYtemp){
+                    // System.out.println("in while in if");
                     g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
             }
             

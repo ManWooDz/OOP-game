@@ -30,8 +30,8 @@ public class player_peaceful extends entity_peaceful{
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
-        screenXtemp = gp.screenWidth/2 ;
-        screenYtemp = gp.screenHeight/2 ;
+        screenXtemp = 384;
+        screenYtemp = 288;
 
         setDefaultValues();
         getPlayerImage();
@@ -42,6 +42,8 @@ public class player_peaceful extends entity_peaceful{
         // worldY = 240;
         worldX = gp.tileSize * 18;
         worldY = gp.tileSize * 10;
+        // worldX = gp.tileSize * 23;
+        // worldY = gp.tileSize * 21;
         speed = 4;
         direction = "down";
     }
@@ -128,7 +130,7 @@ public class player_peaceful extends entity_peaceful{
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize,gp.tileSize,null);
+        g2.drawImage(image, screenXtemp, screenYtemp, gp.tileSize,gp.tileSize,null);
         // g2.drawImage(image, 100, 100, 50, 50, null);
     }
 
