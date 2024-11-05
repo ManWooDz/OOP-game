@@ -17,6 +17,6 @@ public class Knight {
     Knight(){
         for(int i=0;i<im.length;i++){
             im[i] = new ImageIcon(this.getClass().getResource((i+1)+".png"));
-	}
+	    }
     }
 }

@@ -5,7 +5,7 @@ import java.awt.*;
 public class settingscreen extends JPanel{
     private ImageIcon background = new ImageIcon(this.getClass().getResource("background_temp.jpg"));
 
-    public J
+    // public J
 
     settingscreen(){
 

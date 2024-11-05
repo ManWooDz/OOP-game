@@ -13,9 +13,9 @@ public class lobbygame extends JPanel{
 
     lobbygame(){
         setLayout(null);
-        exitJB.setBounds((int)707.5, 650, 170,90);
-        startJB.setBounds((int)112.5,650,170,90);
-        settingJB.setBounds(415,650,170,90);
+        exitJB.setBounds((int)707.5, 645, 170,90);
+        startJB.setBounds((int)112.5,645,170,90);
+        settingJB.setBounds(415,645,170,90);
         add(exitJB);
         add(settingJB);
         // add(start);
@@ -28,6 +28,11 @@ public class lobbygame extends JPanel{
         g.drawImage(background.getImage(),0,0,1000,800,this);
         g.setColor(Color.GREEN);
         g.setFont(new Font("2005_iannnnnTKO",Font.CENTER_BASELINE,90));
-        g.drawString("Maze Adventure",70,200);
+
+        String text = "Maze Adventure";
+        FontMetrics metrics = g.getFontMetrics(g.getFont());
+        int x = (getWidth() - metrics.stringWidth(text)) / 2;
+        g.drawString(text, x, 200);
+        // g.drawString("Maze Adventure",120,200);
     }
 }

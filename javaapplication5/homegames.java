@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 
 public class homegames extends JPanel{
-        private ImageIcon feild = new ImageIcon(this.getClass().getResource("eezy_61-01.jpg"));
+    private ImageIcon feild = new ImageIcon(this.getClass().getResource("eezy_61-01.jpg"));
 	private ImageIcon exit = new ImageIcon(this.getClass().getResource("exit.png"));
 	private ImageIcon starts = new ImageIcon(this.getClass().getResource("start.png"));
 	public JButton BStart = new JButton(starts);
