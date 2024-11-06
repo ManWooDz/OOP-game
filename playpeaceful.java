@@ -10,18 +10,12 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class playpeaceful extends JPanel implements ActionListener, Runnable {
-    private final ImageIcon route_block = new ImageIcon(this.getClass().getResource("temp_openwall.png"));
-    private final ImageIcon exit_block = new ImageIcon(this.getClass().getResource("temp_exit.png"));
-    private final ImageIcon wall_block = new ImageIcon(this.getClass().getResource("temp_grass.png"));
-    private final ImageIcon puzzle_block = new ImageIcon(this.getClass().getResource("temp_puzzle.png"));
-    private final ImageIcon trap_block = new ImageIcon(this.getClass().getResource("temp_trap.png"));
-    private final ImageIcon player_img = new ImageIcon(this.getClass().getResource("playerfi1.png"));
     JButton restartJB = new JButton("Restart");
     JButton mainmenuJB = new JButton("Main Menu");
     JButton quitJB = new JButton("Quit");
     JButton pauseJB = new JButton("||");
     
-    keyHandler keyH = new keyHandler();
+    keyHandler keyH = new keyHandler(this);
     Thread gameThread;
     public player_peaceful player = new player_peaceful(this,keyH);
 
@@ -30,6 +24,8 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     // peacefulMaze mazelayout = new peacefulMaze();
 
     tilesManager_peaceful tileM = new tilesManager_peaceful(this);
+    public collisionChecker cChecker = new collisionChecker(this);
+    public UI_peaceful UI = new UI_peaceful(this);
 
     final int originalTileSize = 16;
     final int scale = 3;
@@ -52,28 +48,37 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     //FPS
     int fps = 60;
 
+    //Game State
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+
 
     //player def pos
     int playerX = 100;
     int playerY = 100;
     int playerSpeed = 4;
 
-    playpeaceful(){
+    public playpeaceful(){
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setFocusable(true);
         this.setDoubleBuffered(true);
         // this.setLayout(null);
-        // pauseJB.setBounds(750, 50, 40, 40);
+        // pauseJB.setBounds(700, 50, 40, 40);
 
         
         this.addKeyListener(keyH);
-        this.add(pauseJB);
+        // this.add(pauseJB);
 
         
 
         // player.x = 250;
         // player.y = 250;
         // actor.start();
+    }
+
+    public void setupGame(){
+        gameState = playState;
     }
 
     public void startgameThread(){
@@ -106,13 +111,20 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
             }
             if(timer >= 1000000000){
                 System.out.println("FPS: " + drawCount);
+                System.out.println(gameState);
                 drawCount = 0;
                 timer = 0;
             }
         }
     }
     public void update(){
-        player.update();
+        if(gameState == playState){
+            player.update();
+            System.out.println("gameState == playState");
+        }
+        if(gameState == pauseState){
+
+        }
         // System.out.println();
     }
 
@@ -122,9 +134,10 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         tileM.draw(g2);
-        System.out.println("draw tileM");
+        // System.out.println("draw tileM");
         player.draw(g2);
-        System.out.println("draw player");
+        // System.out.println("draw player");
+        UI.draw(g2);
 
         g2.dispose();
        

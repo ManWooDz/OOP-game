@@ -5,6 +5,10 @@ public class keyHandler implements KeyListener{
 
     public boolean upPressed, downPressed, leftPressed, rightPressed;
 
+    playpeaceful gp;
+    public keyHandler(playpeaceful gp){
+        this.gp = gp;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -15,6 +19,7 @@ public class keyHandler implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
+
         if(code == KeyEvent.VK_W){
             upPressed = true;
             // System.out.println("press w");
@@ -27,6 +32,13 @@ public class keyHandler implements KeyListener{
         }else if(code == KeyEvent.VK_D){
             rightPressed = true;
             // System.out.println("press d");
+        }else if(code == KeyEvent.VK_ESCAPE){
+            System.out.println("Pressed ESC");
+            if(gp.gameState == gp.playState){
+                gp.gameState = gp.pauseState;
+            }else if(gp.gameState == gp.pauseState){
+                gp.gameState = gp.playState;
+            }
         }
     }
 

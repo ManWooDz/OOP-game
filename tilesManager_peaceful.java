@@ -8,8 +8,8 @@ import javax.imageio.ImageIO;
 
 public class tilesManager_peaceful {
     playpeaceful gp;
-    tiles[] tile;
-    int mapTileNum[][];
+    public tiles[] tile;
+    public int mapTileNum[][];
 
     public tilesManager_peaceful(playpeaceful gp){
         this.gp = gp;
@@ -34,19 +34,21 @@ public class tilesManager_peaceful {
 
             tile[1] = new tiles();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wall.png"));
+            tile[1].collision = true;
             System.out.println("Tile 1 (wall) loaded: " + (tile[1].image != null));
 
             tile[2] = new tiles();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tree.png"));
+            tile[2].collision = true;
 
             System.out.println("Tile 2 (tree) loaded: " + (tile[2].image != null));
 
             tile[3] = new tiles();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water.png"));
             System.out.println("Tile 3 (grass) loaded: " + (tile[3].image != null));
 
             tile[4] = new tiles();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water.png"));
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
             System.out.println("Tile 4 (water) loaded: " + (tile[4].image != null));
 
             // System.out.println("Tile 0 (wall) loaded: " + (tile[0].image != null));

@@ -53,6 +53,7 @@ public class maingame extends JFrame implements ActionListener{
             this.setSize(768, 576);
             this.add(peacefulMode);
             peacefulMode.startgameThread();
+            peacefulMode.setupGame();
             peacefulMode.requestFocusInWindow();
             // System.out.println("type");
         }
