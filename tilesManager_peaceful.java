@@ -14,7 +14,7 @@ public class tilesManager_peaceful {
     public tilesManager_peaceful(playpeaceful gp){
         this.gp = gp;
 
-        tile = new tiles[5];
+        tile = new tiles[6];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         System.out.println("worldCol: " + gp.maxWorldCol + ", worldRow: " + gp.maxWorldRow);
         // mapTileNum = new int[20][20];
@@ -22,7 +22,7 @@ public class tilesManager_peaceful {
         
         getTileImage();
         // loadMap("/map/peaceful_map.txt");
-        loadMap("/map/peaceful_world.txt");
+        loadMap("/map/peaceful_world2.txt");
         
     }
 
@@ -44,12 +44,16 @@ public class tilesManager_peaceful {
             System.out.println("Tile 2 (tree) loaded: " + (tile[2].image != null));
 
             tile[3] = new tiles();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water.png"));
-            System.out.println("Tile 3 (grass) loaded: " + (tile[3].image != null));
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/throns.png"));
+            System.out.println("Tile 3 (throns) loaded: " + (tile[3].image != null));
 
             tile[4] = new tiles();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
-            System.out.println("Tile 4 (water) loaded: " + (tile[4].image != null));
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/exit16px.png"));
+            System.out.println("Tile 4 (exit) loaded: " + (tile[4].image != null));
+
+            tile[5] = new tiles();
+            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
+            System.out.println("Tile 4 (grass) loaded: " + (tile[5].image != null));
 
             // System.out.println("Tile 0 (wall) loaded: " + (tile[0].image != null));
             // System.out.println("Tile 1 (water) loaded: " + (tile[1].image != null));

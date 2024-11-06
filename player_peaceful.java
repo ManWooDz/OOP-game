@@ -47,8 +47,10 @@ public class player_peaceful extends entity_peaceful{
     public void setDefaultValues(){
         // worldX = 624;
         // worldY = 240;
-        worldX = gp.tileSize * 18;
-        worldY = gp.tileSize * 10;
+
+        //Starting Point
+        worldX = gp.tileSize * 17;
+        worldY = gp.tileSize * 17;
         // worldX = gp.tileSize * 23;
         // worldY = gp.tileSize * 21;
         speed = 4;

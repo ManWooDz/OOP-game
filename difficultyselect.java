@@ -15,7 +15,7 @@ public class difficultyselect extends JPanel{
         peacefulJB.setBounds((int)121.5,432,100,53);
         EasyJB.setBounds(343,432,100,53);
         HardJB.setBounds((int)564.5, 432, 100,53);
-        backJB.setBounds((int)50,50,30,30);
+        backJB.setBounds((int)50,50,40,40);
         add(peacefulJB);
         add(EasyJB);
         // add(start);

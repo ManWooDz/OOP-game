@@ -128,6 +128,14 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
         // System.out.println();
     }
 
+    public void exitTheGame(){
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(playpeaceful.this);
+        if (frame != null) {
+            frame.dispose();
+            System.exit(0);
+        }
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 

@@ -3,9 +3,10 @@ import java.awt.event.KeyListener;
 
 public class keyHandler implements KeyListener{
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
 
     playpeaceful gp;
+
     public keyHandler(playpeaceful gp){
         this.gp = gp;
     }
@@ -20,6 +21,14 @@ public class keyHandler implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
 
+        if(gp.gameState == gp.playState){
+            playState(code);
+        }else if(gp.gameState == gp.pauseState){
+            pauseState(code);
+        }
+    }
+
+    public void playState(int code){
         if(code == KeyEvent.VK_W){
             upPressed = true;
             // System.out.println("press w");
@@ -34,10 +43,35 @@ public class keyHandler implements KeyListener{
             // System.out.println("press d");
         }else if(code == KeyEvent.VK_ESCAPE){
             System.out.println("Pressed ESC");
-            if(gp.gameState == gp.playState){
-                gp.gameState = gp.pauseState;
-            }else if(gp.gameState == gp.pauseState){
-                gp.gameState = gp.playState;
+            gp.gameState = gp.pauseState;
+        }
+    }
+    public void pauseState(int code){
+        if(code == KeyEvent.VK_ESCAPE){
+            gp.gameState = gp.playState;
+        }
+        if(code == KeyEvent.VK_ENTER){
+            enterPressed = true;
+        }
+
+        int maxCommandNum = 0;
+        switch(gp.UI.subState){
+            case 0:
+                maxCommandNum = 2;
+            case 1:
+                maxCommandNum = 1;
+        }
+
+        if(code == KeyEvent.VK_W){
+            gp.UI.commandNum--;
+            if(gp.UI.commandNum < 0){
+                gp.UI.commandNum = maxCommandNum;
+            }
+        }
+        if(code == KeyEvent.VK_S){
+            gp.UI.commandNum++;
+            if(gp.UI.commandNum > maxCommandNum){
+                gp.UI.commandNum = 0;
             }
         }
     }
@@ -53,6 +87,8 @@ public class keyHandler implements KeyListener{
             leftPressed = false;
         }else if(code == KeyEvent.VK_D){
             rightPressed = false;
+        }else if(code == KeyEvent.VK_ENTER){
+            enterPressed = false;
         }
         
     }
