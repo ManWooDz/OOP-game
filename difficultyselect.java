@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class difficultyselect extends JPanel{
-    private ImageIcon background = new ImageIcon(this.getClass().getResource("background_temp.jpg"));
+    private ImageIcon background = new ImageIcon(this.getClass().getResource("/assests/backg1.png"));
     public JButton peacefulJB = new JButton("Peaceful");
     public JButton EasyJB = new JButton("Easy");
     public JButton HardJB = new JButton("Hard");

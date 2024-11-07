@@ -7,11 +7,11 @@ import javax.swing.*;
 
 public class maingame extends JFrame implements ActionListener{
     lobbygame lobbyscreen = new lobbygame();
-    difficultyselect difficulscreen = new difficultyselect();
+    // difficultyselect difficulscreen = new difficultyselect();
     playpeaceful peacefulMode = new playpeaceful();
 
     JPanel settingscreen = new JPanel();
-    JPanel selectDifficalty = new JPanel();
+    // JPanel selectDifficalty = new JPanel();
     
     public maingame(){
         // this.setSize(1000, 800);
@@ -20,8 +20,8 @@ public class maingame extends JFrame implements ActionListener{
         lobbyscreen.exitJB.addActionListener(this);
         lobbyscreen.startJB.addActionListener(this);
         lobbyscreen.settingJB.addActionListener(this);
-        difficulscreen.backJB.addActionListener(this);
-        difficulscreen.peacefulJB.addActionListener(this);
+        // difficulscreen.backJB.addActionListener(this);
+        // difficulscreen.peacefulJB.addActionListener(this);
         // System.out.println("Game run");
     }
 
@@ -42,20 +42,21 @@ public class maingame extends JFrame implements ActionListener{
             
             // this.add(difficulscreen);
             this.setLocationRelativeTo(null);
-            this.remove(difficulscreen);
+            // this.remove(difficulscreen);
             // this.setSize(1000, 800);
             this.setSize(768, 576);
             this.add(peacefulMode);
             peacefulMode.startgameThread();
             peacefulMode.setupGame();
             peacefulMode.requestFocusInWindow();
-        }else if(e.getSource() == difficulscreen.backJB){
+        }
+        // else if(e.getSource() == difficulscreen.backJB){
             // this.setLocationRelativeTo(null);
             // this.remove(difficulscreen);
             // // this.setSize(1000, 800);
             // this.setSize(768, 576);
             // this.add(lobbyscreen);
-        }else if(e.getSource() == difficulscreen.peacefulJB){
+        // }else if(e.getSource() == difficulscreen.peacefulJB){
             // this.setLocationRelativeTo(null);
             // this.remove(difficulscreen);
             // // this.setSize(1000, 800);
@@ -65,7 +66,7 @@ public class maingame extends JFrame implements ActionListener{
             // peacefulMode.setupGame();
             // peacefulMode.requestFocusInWindow();
             // System.out.println("type");
-        }
+        // }
         this.validate();
         this.repaint();
     }
