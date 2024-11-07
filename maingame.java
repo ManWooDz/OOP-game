@@ -35,18 +35,12 @@ public class maingame extends JFrame implements ActionListener{
             this.setSize(768, 576);
             this.add(settingscreen);
         }else if(e.getSource() == lobbyscreen.startJB){
-            this.setLocationRelativeTo(null);
-            this.remove(lobbyscreen);
-            // this.setSize(1000, 800);
-            this.setSize(768, 576);
-            this.add(difficulscreen);
-        }else if(e.getSource() == difficulscreen.backJB){
-            this.setLocationRelativeTo(null);
-            this.remove(difficulscreen);
-            // this.setSize(1000, 800);
-            this.setSize(768, 576);
-            this.add(lobbyscreen);
-        }else if(e.getSource() == difficulscreen.peacefulJB){
+            // this.setLocationRelativeTo(null);
+            // this.remove(lobbyscreen);
+            // // this.setSize(1000, 800);
+            // this.setSize(768, 576);
+            
+            // this.add(difficulscreen);
             this.setLocationRelativeTo(null);
             this.remove(difficulscreen);
             // this.setSize(1000, 800);
@@ -55,6 +49,21 @@ public class maingame extends JFrame implements ActionListener{
             peacefulMode.startgameThread();
             peacefulMode.setupGame();
             peacefulMode.requestFocusInWindow();
+        }else if(e.getSource() == difficulscreen.backJB){
+            // this.setLocationRelativeTo(null);
+            // this.remove(difficulscreen);
+            // // this.setSize(1000, 800);
+            // this.setSize(768, 576);
+            // this.add(lobbyscreen);
+        }else if(e.getSource() == difficulscreen.peacefulJB){
+            // this.setLocationRelativeTo(null);
+            // this.remove(difficulscreen);
+            // // this.setSize(1000, 800);
+            // this.setSize(768, 576);
+            // this.add(peacefulMode);
+            // peacefulMode.startgameThread();
+            // peacefulMode.setupGame();
+            // peacefulMode.requestFocusInWindow();
             // System.out.println("type");
         }
         this.validate();

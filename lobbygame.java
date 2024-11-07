@@ -13,11 +13,11 @@ public class lobbygame extends JPanel{
 
     lobbygame(){
         setLayout(null);
-        exitJB.setBounds((int)564.5, 432, 100,53);
-        startJB.setBounds((int)121.5,432,100,53);
-        settingJB.setBounds(343,432,170,53);
+        exitJB.setBounds((int)501, 432, 150,70);
+        startJB.setBounds((int)117,432,150,70);
+        // settingJB.setBounds(343,432,170,53);
         add(exitJB);
-        add(settingJB);
+        // add(settingJB);
         // add(start);
         
         add(startJB);

@@ -1,3 +1,4 @@
+import java.awt.RenderingHints.Key;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -21,10 +22,19 @@ public class keyHandler implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
 
+        //PlayState
         if(gp.gameState == gp.playState){
             playState(code);
         }else if(gp.gameState == gp.pauseState){
+            //PauseState
             pauseState(code);
+        }else if(gp.gameState == gp.dialogState){
+            //DialogState
+            dialogState(code);
+        }else if(gp.gameState == gp.gameOverState){
+            gameOverState(code);
+        }else if(gp.gameState == gp.finishedState){
+            finishedState(code);
         }
     }
 
@@ -44,6 +54,18 @@ public class keyHandler implements KeyListener{
         }else if(code == KeyEvent.VK_ESCAPE){
             System.out.println("Pressed ESC");
             gp.gameState = gp.pauseState;
+        }else if(code == KeyEvent.VK_UP){
+            upPressed = true;
+            // System.out.println("press w");
+        }else if(code == KeyEvent.VK_DOWN){
+            downPressed = true;
+            // System.out.println("press s");
+        }else if(code == KeyEvent.VK_LEFT){
+            leftPressed = true;
+            // System.out.println("press a");
+        }else if(code == KeyEvent.VK_RIGHT){
+            rightPressed = true;
+            // System.out.println("press d");
         }
     }
     public void pauseState(int code){
@@ -73,6 +95,91 @@ public class keyHandler implements KeyListener{
             if(gp.UI.commandNum > maxCommandNum){
                 gp.UI.commandNum = 0;
             }
+        }else if(code == KeyEvent.VK_UP){
+            gp.UI.commandNum--;
+            if(gp.UI.commandNum < 0){
+                gp.UI.commandNum = maxCommandNum;
+            }
+        }else if(code == KeyEvent.VK_DOWN){
+            gp.UI.commandNum++;
+            if(gp.UI.commandNum > maxCommandNum){
+                gp.UI.commandNum = 0;
+            }
+        }
+    }
+
+    public void dialogState(int code){
+        if(code == KeyEvent.VK_ENTER){
+            gp.gameState = gp.playState;
+        }
+    }
+
+    public void gameOverState(int code){
+        if(code == KeyEvent.VK_W){
+            gp.UI.commandNum--;
+            if(gp.UI.commandNum < 0){
+                gp.UI.commandNum = 1;
+            }
+        }
+        if(code == KeyEvent.VK_S){
+            gp.UI.commandNum++;
+            if(gp.UI.commandNum > 1){
+                gp.UI.commandNum = 0;
+            }
+        }
+        if(code == KeyEvent.VK_UP){
+            gp.UI.commandNum--;
+            if(gp.UI.commandNum < 0){
+                gp.UI.commandNum = 1;
+            }
+        }
+        if(code == KeyEvent.VK_DOWN){
+            gp.UI.commandNum++;
+            if(gp.UI.commandNum > 1){
+                gp.UI.commandNum = 0;
+            }
+        }
+        if(code == KeyEvent.VK_ENTER){
+            if(gp.UI.commandNum == 0){
+                gp.gameState = gp.playState;
+                gp.restart();
+            }else if(gp.UI.commandNum == 1){
+                gp.exitTheGame();
+            }
+        }
+    }
+    public void finishedState(int code){
+        if(code == KeyEvent.VK_W){
+            gp.UI.commandNum--;
+            if(gp.UI.commandNum < 0){
+                gp.UI.commandNum = 1;
+            }
+        }
+        if(code == KeyEvent.VK_S){
+            gp.UI.commandNum++;
+            if(gp.UI.commandNum > 1){
+                gp.UI.commandNum = 0;
+            }
+        }
+        if(code == KeyEvent.VK_UP){
+            gp.UI.commandNum--;
+            if(gp.UI.commandNum < 0){
+                gp.UI.commandNum = 1;
+            }
+        }
+        if(code == KeyEvent.VK_DOWN){
+            gp.UI.commandNum++;
+            if(gp.UI.commandNum > 1){
+                gp.UI.commandNum = 0;
+            }
+        }
+        if(code == KeyEvent.VK_ENTER){
+            if(gp.UI.commandNum == 0){
+                gp.gameState = gp.playState;
+                gp.restart();
+            }else if(gp.UI.commandNum == 1){
+                gp.exitTheGame();
+            }
         }
     }
 
@@ -89,6 +196,18 @@ public class keyHandler implements KeyListener{
             rightPressed = false;
         }else if(code == KeyEvent.VK_ENTER){
             enterPressed = false;
+        }else if(code == KeyEvent.VK_UP){
+            upPressed = false;
+            // System.out.println("press w");
+        }else if(code == KeyEvent.VK_DOWN){
+            downPressed = false;
+            // System.out.println("press s");
+        }else if(code == KeyEvent.VK_LEFT){
+            leftPressed = false;
+            // System.out.println("press a");
+        }else if(code == KeyEvent.VK_RIGHT){
+            rightPressed = false;
+            // System.out.println("press d");
         }
         
     }

@@ -13,4 +13,10 @@ public class entity_peaceful {
 
     public Rectangle solidArea;
     public boolean collisionOn = false;
+
+    String dialoges[] = new String[20];
+
+    //character statue
+    public int maxLife;
+    public int life;
 }

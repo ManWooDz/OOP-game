@@ -29,8 +29,8 @@ public class tilesManager_peaceful {
     public void getTileImage(){
         try{
             tile[0] = new tiles();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/earth.png"));
-            System.out.println("Tile 0 (earth) loaded: " + (tile[0].image != null));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
+            System.out.println("Tile 0 (grass) loaded: " + (tile[0].image != null));
 
             tile[1] = new tiles();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wall.png"));
@@ -52,8 +52,8 @@ public class tilesManager_peaceful {
             System.out.println("Tile 4 (exit) loaded: " + (tile[4].image != null));
 
             tile[5] = new tiles();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
-            System.out.println("Tile 4 (grass) loaded: " + (tile[5].image != null));
+            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/earth.png"));
+            System.out.println("Tile 4 (earth) loaded: " + (tile[5].image != null));
 
             // System.out.println("Tile 0 (wall) loaded: " + (tile[0].image != null));
             // System.out.println("Tile 1 (water) loaded: " + (tile[1].image != null));

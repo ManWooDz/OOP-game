@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -21,7 +22,7 @@ public class UI_peaceful {
     public boolean gameFinished = false;
 
     double playTime;
-    DecimalFormat dFormat = new DecimalFormat("#0:00");
+    DecimalFormat dFormat = new DecimalFormat("#0.00");
 
     private ImageIcon background = new ImageIcon(this.getClass().getResource("background_temp.jpg"));
 
@@ -30,6 +31,12 @@ public class UI_peaceful {
     public String currentDialog = "";
 
     Font pixellet;
+
+    BufferedImage heart_full,heart_blank;
+
+    int score;
+
+
 
     // JButton resumeJB = new JButton("RESUME");
     // JButton mainmenuJB = new JButton("MAIN MENU");
@@ -49,10 +56,18 @@ public class UI_peaceful {
         // } catch(IOException e){
         //     e.printStackTrace();
         // }
+
+        //CREATE HUD OBJECT
+        SuperObect heart = new OBJ_hearts(gp);
+        heart_full = heart.image2;
+        heart_blank = heart.image;
     }
     public void showMessage(String text){
         message = text;
         messageOn = true;
+    }
+    public void resetTimer(){
+        playTime = 0;
     }
 
     public void draw(Graphics2D g2){
@@ -63,13 +78,83 @@ public class UI_peaceful {
         g2.setFont(new Font("Arial", Font.PLAIN,40));
         g2.setColor(Color.white);
 
+        //Play
         if(gp.gameState == gp.playState){
             //play stuff
+            drawPlayerLife();
+            drawTimer();
         }
+        //Pause || Option
         if(gp.gameState == gp.pauseState){
+            drawPlayerLife();
+            drawTimer();
             drawPauseScreen();
         }
+        //Dialog
+        if(gp.gameState == gp.dialogState){
+            drawPlayerLife();
+            drawTimer();
+            drawDialogScreen();
+        }
+        //GAME OVER
+        if(gp.gameState == gp.gameOverState){
+            drawGameOverScreen();
+        }
+        //FINISH
+        if(gp.gameState == gp.finishedState){
+            drawFinishScreen();
+        }
     }
+
+    public void drawPlayerLife(){
+
+        //test playerlife
+        // gp.player.life = 1;
+
+        int x = gp.tileSize/2;
+        int y = gp.tileSize/2;
+        int i = 0;
+
+        //Draw Blank Life
+        while(i < gp.player.maxLife){
+            g2.drawImage(heart_blank, x, y, null);
+            i++;
+            x += gp.tileSize;
+        }
+
+        x = gp.tileSize/2;
+        y = gp.tileSize/2;
+        i = 0;
+
+        //Draw Current Life
+        while(i < gp.player.life){
+            g2.drawImage(heart_full, x, y, null);
+            i++;
+            x += gp.tileSize;
+        }
+    }
+
+    public void drawTimer(){
+
+        if(gp.gameState == gp.playState){
+            playTime += (double)1/60;
+            
+            int minutes = (int) (playTime / 60); 
+            int seconds = (int) (playTime % 60);
+            String timeText = String.format("%02d:%02d", minutes, seconds);
+
+            g2.drawString("Time: " + timeText, gp.tileSize*11, 65);
+        }else if(gp.gameState == gp.pauseState || gp.gameState == gp.dialogState){
+            int minutes = (int) (playTime / 60); 
+            int seconds = (int) (playTime % 60);
+            String timeText = String.format("%02d:%02d", minutes, seconds);
+
+            g2.drawString("Time: " + timeText, gp.tileSize*11, 65);
+        }
+
+
+    }
+
     public void drawPauseScreen(){
         /*
          * String text = "PAUSED";
@@ -112,6 +197,20 @@ public class UI_peaceful {
         
     }
 
+    public void drawDialogScreen(){
+        int x = gp.tileSize*2;
+        int y = gp.tileSize/2;
+        int width = gp.screenWidth - (gp.tileSize*2);
+        int height = gp.tileSize*4;
+
+        drawSubWindows(x, y, width, height);
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32f));
+        x += gp.tileSize;
+        y += gp.tileSize;
+        g2.drawString(currentDialog, x, y);
+    }
+
     public void drawSubWindows(int x, int y, int width, int height){
         Color c = new Color(0,0,0,210);
         g2.setColor(c);
@@ -123,6 +222,104 @@ public class UI_peaceful {
         g2.drawRoundRect(x+5, y+5, width-10, height-10, 25, 25);
 
         
+    }
+
+    public void drawGameOverScreen(){
+        g2.setColor(new Color(0,0,0,150));
+        g2.fillRect(0, 0, gp.screenHeight, gp.screenWidth);
+
+        int x;
+        int y;
+        String text;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,110f));
+
+        text = "Game Over";
+        //Shadow
+        g2.setColor(Color.black);
+        x = getXforCenteredText(text);
+        y = gp.tileSize*4;
+        g2.drawString(text, x, y);
+
+        //Main
+        g2.setColor(Color.white);
+        g2.drawString(text, x, y);
+
+        //Retry
+        g2.setFont(g2.getFont().deriveFont(50f));
+        text = "Retry";
+        x = getXforCenteredText(text);
+        y += gp.tileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-40, y);
+        }
+
+        //Quit
+        text = "Quit";
+        x = getXforCenteredText(text);
+        y += 55;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-40, y);
+        }
+    }
+
+    public void drawFinishScreen(){
+        //calculate score
+        score = gp.player.life * 20;
+
+        if (playTime < 3 * 60) { 
+            score += 40;           // Add 40 if playTime is under 3 minutes
+        } else if (playTime < 5 * 60) {  
+            score += 20;           // Add 20 if playTime is under 5 minutes but over 3 minutes
+        } else {
+            score += 0;            // Add 0 if playTime is over 5 minutes
+        }
+
+        g2.setColor(new Color(0,0,0,150));
+        g2.fillRect(0, 0, gp.screenHeight, gp.screenWidth);
+
+        int x;
+        int y;
+        String text;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,70f));
+
+        text = "Congratulations!";
+        //Shadow
+        g2.setColor(Color.black);
+        x = getXforCenteredText(text);
+        y = gp.tileSize*3;
+        g2.drawString(text, x, y);
+
+        //Main
+        g2.setColor(Color.white);
+        g2.drawString(text, x, y);
+
+        //score
+        g2.setFont(g2.getFont().deriveFont(30f));
+        text = "Score: " + score;
+        x = getXforCenteredText(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+
+        //Retry
+        g2.setFont(g2.getFont().deriveFont(50f));
+        text = "Retry";
+        x = getXforCenteredText(text);
+        y += gp.tileSize*4;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x-40, y);
+        }
+
+        //Quit
+        text = "Quit";
+        x = getXforCenteredText(text);
+        y += 55;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x-40, y);
+        }
     }
 
     public void options_top(int frameX, int frameY){

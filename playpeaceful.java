@@ -23,9 +23,11 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
 
     // peacefulMaze mazelayout = new peacefulMaze();
 
+    //SYSYEM
     tilesManager_peaceful tileM = new tilesManager_peaceful(this);
     public collisionChecker cChecker = new collisionChecker(this);
     public UI_peaceful UI = new UI_peaceful(this);
+    public EventHandler eHandler = new EventHandler(this);
 
     final int originalTileSize = 16;
     final int scale = 3;
@@ -40,8 +42,8 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     // final int screenWidth = 800;
 
     //world setting
-    public final int maxWorldCol = 35;
-    public final int maxWorldRow = 35;
+    public final int maxWorldCol = 53;
+    public final int maxWorldRow = 53;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
@@ -52,6 +54,9 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     public int gameState;
     public final int playState = 1;
     public final int pauseState = 2;
+    public final int dialogState = 3;
+    public final int gameOverState = 4;
+    public final int finishedState = 5;
 
 
     //player def pos
@@ -111,7 +116,7 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
             }
             if(timer >= 1000000000){
                 System.out.println("FPS: " + drawCount);
-                System.out.println(gameState);
+                // System.out.println(gameState);
                 drawCount = 0;
                 timer = 0;
             }
@@ -120,12 +125,20 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     public void update(){
         if(gameState == playState){
             player.update();
-            System.out.println("gameState == playState");
+            // System.out.println("gameState == playState");
         }
         if(gameState == pauseState){
 
         }
-        // System.out.println();
+        // if(gameState == dialogState){
+        //     drawDialogScreen();
+        // }
+    }
+
+    public void restart(){
+        player.setDefaultValues();
+        UI.resetTimer();
+        
     }
 
     public void exitTheGame(){

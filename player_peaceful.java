@@ -25,6 +25,9 @@ public class player_peaceful extends entity_peaceful{
     public final int screenXtemp;
     public final int screenYtemp;
 
+    public final int solidAreaDefaultX;
+    public final int solidAreaDefaultY;
+
     player_peaceful(playpeaceful gp, keyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
@@ -37,6 +40,8 @@ public class player_peaceful extends entity_peaceful{
         solidArea = new Rectangle();
         solidArea.x = 8;
         solidArea.y = 16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         solidArea.width = 32;
         solidArea.height = 32;
 
@@ -49,12 +54,16 @@ public class player_peaceful extends entity_peaceful{
         // worldY = 240;
 
         //Starting Point
-        worldX = gp.tileSize * 17;
-        worldY = gp.tileSize * 17;
+        worldX = gp.tileSize * 26;
+        worldY = gp.tileSize * 26;
         // worldX = gp.tileSize * 23;
         // worldY = gp.tileSize * 21;
         speed = 4;
         direction = "down";
+
+        //Player Status
+        maxLife = 3;
+        life = maxLife;
     }
 
     public void getPlayerImage(){
@@ -88,8 +97,12 @@ public class player_peaceful extends entity_peaceful{
                 
             }
 
+            //Tile Collision
             collisionOn = false;
             gp.cChecker.checkTile(this);
+
+            //Check Event
+            gp.eHandler.checkEvent();
 
             if(collisionOn == false){
                 switch(direction){
@@ -117,6 +130,10 @@ public class player_peaceful extends entity_peaceful{
                 }
                 spriteCounter = 0;
             }
+        }
+
+        if(life <= 0 ){
+            gp.gameState = gp.gameOverState;
         }
 
         
