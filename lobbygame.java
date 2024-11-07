@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class lobbygame extends JPanel{
     // private ImageIcon background = new ImageIcon(this.getClass().getResource("background_temp.jpg"));
-    private ImageIcon background2 = new ImageIcon(this.getClass().getResource("backg1.png"));
+    private ImageIcon background2 = new ImageIcon(this.getClass().getResource("/assests/backg1.png"));
     // private ImageIcon settingbackground = new ImageIcon(this.getClass().getResource("settingbanner.jpg"));
     // private ImageIcon exitbackground = new ImageIcon(this.getClass().getResource("exitbanner.jpg"));
     // private ImageIcon startbackground = new ImageIcon(this.getClass().getResource("startbanner.jpg"));
@@ -27,7 +27,7 @@ public class lobbygame extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawImage(background2.getImage(),0,0,768,576,this);
-        System.out.println("draw backgroundimg");
+        // System.out.println("draw backgroundimg");
         g.setColor(Color.GREEN);
         g.setFont(new Font("2005_iannnnnTKO",Font.CENTER_BASELINE,90));
 
