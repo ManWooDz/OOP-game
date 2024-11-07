@@ -90,7 +90,7 @@ public class EventHandler {
 
     public void damagePit(int gameState){
         gp.gameState = gameState;
-        gp.UI.currentDialog = "You stepped into a thorns!";
+        gp.UI.currentDialog = "You have stepped into thorns!";
         gp.player.life -= 1;
 
         canTouchEvent = false;
