@@ -121,6 +121,7 @@ public class player_peaceful extends entity_peaceful{
                 }
             }
 
+            //movement of player
             spriteCounter++;
             if(spriteCounter > 12){
                 if(spriteNum == 1){

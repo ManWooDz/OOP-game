@@ -11,6 +11,7 @@ public class collisionChecker {
         int entityTopWorldY = entity.worldY + entity.solidArea.y;
         int entityBottomWorldY = entity.worldY + entity.solidArea.y + entity.solidArea.height;
 
+        //coordinates from entity
         int entityLeftCol = entityLeftWorldX/gp.tileSize;
         int entityRightCol = entityRightWorldX/gp.tileSize;
         int entityTopRow = entityTopWorldY/gp.tileSize;

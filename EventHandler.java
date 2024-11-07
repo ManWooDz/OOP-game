@@ -15,6 +15,7 @@ public class EventHandler {
         int col = 0;
         int row = 0;
         while(col < gp.maxWorldCol && row < gp.maxWorldRow){
+            //store the index of event trigger coordinate in a tile
             eventRect[col][row] = new EventRect();
             eventRect[col][row].x = 23;
             eventRect[col][row].y = 23;

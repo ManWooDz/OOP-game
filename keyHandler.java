@@ -20,6 +20,7 @@ public class keyHandler implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
+        //store KeyCode
         int code = e.getKeyCode();
 
         //PlayState
@@ -79,8 +80,10 @@ public class keyHandler implements KeyListener{
         int maxCommandNum = 0;
         switch(gp.UI.subState){
             case 0:
+                //Options page
                 maxCommandNum = 2;
             case 1:
+                //Confirm exit page
                 maxCommandNum = 1;
         }
 

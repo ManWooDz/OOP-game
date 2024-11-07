@@ -10,7 +10,7 @@ public class maingame extends JFrame implements ActionListener{
     // difficultyselect difficulscreen = new difficultyselect();
     playpeaceful peacefulMode = new playpeaceful();
 
-    JPanel settingscreen = new JPanel();
+    // JPanel settingscreen = new JPanel();
     // JPanel selectDifficalty = new JPanel();
     
     public maingame(){
@@ -19,7 +19,7 @@ public class maingame extends JFrame implements ActionListener{
         this.add(lobbyscreen);
         lobbyscreen.exitJB.addActionListener(this);
         lobbyscreen.startJB.addActionListener(this);
-        lobbyscreen.settingJB.addActionListener(this);
+        // lobbyscreen.settingJB.addActionListener(this);
         // difficulscreen.backJB.addActionListener(this);
         // difficulscreen.peacefulJB.addActionListener(this);
         // System.out.println("Game run");
@@ -29,11 +29,11 @@ public class maingame extends JFrame implements ActionListener{
         if(e.getSource() == lobbyscreen.exitJB){
             this.dispose();
         }else if(e.getSource() == lobbyscreen.settingJB){
-            this.setLocationRelativeTo(null);
-            this.remove(lobbyscreen);
-            // this.setSize(1000, 800);
-            this.setSize(768, 576);
-            this.add(settingscreen);
+            // this.setLocationRelativeTo(null);
+            // this.remove(lobbyscreen);
+            // // this.setSize(1000, 800);
+            // this.setSize(768, 576);
+            // this.add(settingscreen);
         }else if(e.getSource() == lobbyscreen.startJB){
             // this.setLocationRelativeTo(null);
             // this.remove(lobbyscreen);
@@ -41,9 +41,11 @@ public class maingame extends JFrame implements ActionListener{
             // this.setSize(768, 576);
             
             // this.add(difficulscreen);
-            this.setLocationRelativeTo(null);
+            
             // this.remove(difficulscreen);
             // this.setSize(1000, 800);
+            
+            this.setLocationRelativeTo(null);
             this.setSize(768, 576);
             this.add(peacefulMode);
             peacefulMode.startgameThread();

@@ -13,6 +13,8 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     JButton quitJB = new JButton("Quit");
     JButton pauseJB = new JButton("||");
     
+
+    //
     keyHandler keyH = new keyHandler(this);
     Thread gameThread;
     public player_peaceful player = new player_peaceful(this,keyH);
@@ -27,10 +29,11 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     public UI_peaceful UI = new UI_peaceful(this);
     public EventHandler eHandler = new EventHandler(this);
 
-    final int originalTileSize = 16;
+    final int originalTileSize = 16; //16x16 pixel
     final int scale = 3;
 
     final int tileSize = originalTileSize * scale; //48
+    // 4:3 res
     final int maxScreenCol = 16;
     final int maxScreenRow = 12;
     final int screenHeight = tileSize*maxScreenCol; //768
@@ -91,7 +94,7 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
 
     @Override
     public void run() {
-        double drawInterval = 1000000000/fps;
+        double drawInterval = 1000000000/fps; //0.0166 sec
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -164,6 +167,8 @@ public class playpeaceful extends JPanel implements ActionListener, Runnable {
     }
 
 
+
+    //not using
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == restartJB) {
             //restart
