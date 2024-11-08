@@ -200,8 +200,9 @@ public class UI_peaceful {
     public void drawDialogScreen(){
         int x = gp.tileSize*2;
         int y = gp.tileSize/2;
-        int width = gp.screenWidth - (gp.tileSize*2);
-        int height = gp.tileSize*4;
+        // int width = gp.screenWidth - (gp.tileSize*2);
+        int width = gp.screenWidth - (gp.tileSize*1);
+        int height = gp.tileSize*3;
 
         drawSubWindows(x, y, width, height);
 
